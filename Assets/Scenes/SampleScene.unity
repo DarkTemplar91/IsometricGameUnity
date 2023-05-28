@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &303799727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 180876193031965012, guid: 0a4708251416fb0419c4b4dbb10c0e6f, type: 3}
+  m_PrefabInstance: {fileID: 180876192795415803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &303799728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 180876193031965003, guid: 0a4708251416fb0419c4b4dbb10c0e6f, type: 3}
@@ -381,6 +386,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1321201961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8725017308521349462, guid: b3ddf4a8d43930f409c0ad2f04688ae9, type: 3}
+  m_PrefabInstance: {fileID: 8725017307542401151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1321201962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8725017308521349461, guid: b3ddf4a8d43930f409c0ad2f04688ae9, type: 3}
@@ -491,6 +501,8 @@ MonoBehaviour:
   moveSpeed: 5
   rigidBody: {fileID: 1342565280}
   camera: {fileID: 519420031}
+  tile1: {fileID: 303799727}
+  tile2: {fileID: 1321201961}
 --- !u!50 &1342565280
 Rigidbody2D:
   serializedVersion: 4
