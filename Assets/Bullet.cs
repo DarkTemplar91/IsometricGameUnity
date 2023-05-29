@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile"))
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 			return;

@@ -22,10 +22,18 @@ public class SpawnTiles : MonoBehaviour
     void Update()
     {
         Tilemap[] tilemaps =  FindObjectsOfType<Tilemap>(); //Gets all the tilemaps.
-        if (tilemaps.Length >= 8)
-            return;
+        
         foreach (var tilemap in tilemaps)
         {
+            if (Mathf.Abs(tilemap.transform.position.x - player.transform.position.x) > tilemapGround.size.x)
+            {
+                Destroy(tilemap.gameObject);
+            }
+            if (Mathf.Abs(tilemap.transform.position.y - player.transform.position.y) > tilemapGround.size.y)
+            {
+                Destroy(tilemap.gameObject);
+            }
+            
             if(Mathf.Abs(tilemap.transform.position.x - player.transform.position.x) > tilemapWidth )
             {
                 Vector3 offset = new Vector3();
@@ -40,16 +48,16 @@ public class SpawnTiles : MonoBehaviour
                 }
                 
                 var position = tilemap.transform.position + offset;
-                if(CheckOffsetTilemapExists(position))
-                    continue;
-                
-                Tilemap tmGround =  Instantiate(tilemapGround,position, Quaternion.identity);
-                Tilemap tmObject = Instantiate(tilemapObject, position, Quaternion.identity);
+                if (!CheckOffsetTilemapExists(position))
+                {
+                    
+                    Tilemap tmGround = Instantiate(tilemapGround, position, Quaternion.identity);
+                    Tilemap tmObject = Instantiate(tilemapObject, position, Quaternion.identity);
 
-                var transform1 = grid.transform;
-                tmGround.transform.parent = transform1;
-                tmObject.transform.parent = transform1;
-                break;
+                    var transform1 = grid.transform;
+                    tmGround.transform.parent = transform1;
+                    tmObject.transform.parent = transform1;
+                }
             }
 
             if (Mathf.Abs(tilemap.transform.position.y - player.transform.position.y) > tilemapHeight)
@@ -65,16 +73,15 @@ public class SpawnTiles : MonoBehaviour
                 }
 
                 var position = tilemap.transform.position + offset;
-                if(CheckOffsetTilemapExists(position))
-                    continue;
+                if (!CheckOffsetTilemapExists(position))
+                {
+                    Tilemap tmGround = Instantiate(tilemapGround, position, Quaternion.identity);
+                    Tilemap tmObject = Instantiate(tilemapObject, position, Quaternion.identity);
 
-                Tilemap tmGround =  Instantiate(tilemapGround,position, Quaternion.identity);
-                Tilemap tmObject = Instantiate(tilemapObject, position, Quaternion.identity);
-
-                var transform1 = grid.transform;
-                tmGround.transform.parent = transform1;
-                tmObject.transform.parent = transform1;
-                break;
+                    var transform1 = grid.transform;
+                    tmGround.transform.parent = transform1;
+                    tmObject.transform.parent = transform1;
+                }
             }
         }
         
@@ -86,10 +93,8 @@ public class SpawnTiles : MonoBehaviour
         foreach (var tilemap in tilemaps)
         {
             if (tilemap.transform.position == position)
-            {
-                Debug.Log("exists");
                 return true;
-            }
+            
         }
 
         return false;

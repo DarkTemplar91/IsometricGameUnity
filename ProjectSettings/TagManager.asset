@@ -6,11 +6,12 @@ TagManager:
   tags:
   - CollisionObject
   - Projectile
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ProjectileLayer
   - Water
   - UI
   - 
