@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 893816600137221708, guid: 7ebd36f3171525b4cb7b3d04c15861b1, type: 3}
+  maxDistance: 5
