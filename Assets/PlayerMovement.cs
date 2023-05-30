@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,10 +22,14 @@ public class PlayerMovement : MonoBehaviour
 
     private HealthUIscript uiScript;
 
+    private GameOverScreen gameOverScreen;
+
     public void Start()
     {
 	    currentHealth = maxHealth;
 	    uiScript = GameObject.Find("HeartsContainer").GetComponent<HealthUIscript>();
+	    gameOverScreen = GameObject.Find("GameOverPanel").GetComponent<GameOverScreen>();
+	    gameOverScreen.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -87,8 +85,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-	    //TODO: Destroy object and show death ui
-	    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	    Time.timeScale = 0;
+	    gameOverScreen.gameObject.SetActive(true);
+	    gameOverScreen.Setup(GameObject.Find("ScoreText").GetComponent<Score>().GetScore());
+	    GameObject.Find("Stats").SetActive(false);
     }
 
     public void SetInvincible(bool invincible)
