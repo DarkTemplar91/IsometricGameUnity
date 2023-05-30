@@ -56,7 +56,6 @@ public class EnemyMovement : MonoBehaviour
     private void KillEnemy()
     {
         int randomValue = rnd.Next(100);
-        Debug.Log($"Value: {randomValue}");
         for (int i = 0; i < loot.Length; i++)
         {
             float lowerBound = (i == 0) ? 0f : dropRatesForLoot[0..(i)].Sum();
@@ -64,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 Instantiate(loot[i], gameObject.transform.position, Quaternion.identity);
             }
-            Debug.Log($"Item{i+1}: Lower bound: {lowerBound}, Upper Bound: {dropRatesForLoot[..(i+1)].Sum()}");
+            
         }
         
         score.IncrementScore();

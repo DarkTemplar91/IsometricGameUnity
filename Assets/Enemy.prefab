@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601b39d7dfc1d6943b927c5698777a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 3.8
   dropRatesForLoot:
-  - 3
-  - 5
-  - 4
+  - 6
+  - 10
+  - 8
   loot:
   - {fileID: 7622753855986650189, guid: 53843a96d18ec7c458af7a681ede9af6, type: 3}
   - {fileID: 6928193948599129884, guid: a1fb1c4b9faede348892a27961ad6c3b, type: 3}

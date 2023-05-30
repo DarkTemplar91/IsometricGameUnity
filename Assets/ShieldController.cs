@@ -28,7 +28,6 @@ public class ShieldController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"Collision with: {collision.name}");
         if (!collision.CompareTag("Player")) return;
         InvokeRepeating(nameof(Countdown), 0, 1);
         player.SetInvincible(true);
@@ -37,7 +36,6 @@ public class ShieldController : MonoBehaviour
 
     private void Countdown()
     {
-        Debug.Log("Countdown...");
         invincibilityRemaining--;
         counter.RefreshCounter(Convert.ToInt32(invincibilityRemaining));
     }

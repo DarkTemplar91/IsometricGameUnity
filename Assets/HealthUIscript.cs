@@ -29,7 +29,6 @@ public class HealthUIscript : MonoBehaviour
 
     public void AddHeart(int health)
     {
-        Debug.Log("What happened");
         Image img = Instantiate(heartImage, transform.position, Quaternion.identity);
         img.transform.SetParent(gameObject.transform);
         children[health - 1] = img.gameObject;
