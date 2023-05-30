@@ -100,6 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  dropRatesForLoot:
+  - 3
+  - 5
+  - 4
+  loot:
+  - {fileID: 7622753855986650189, guid: 53843a96d18ec7c458af7a681ede9af6, type: 3}
+  - {fileID: 6928193948599129884, guid: a1fb1c4b9faede348892a27961ad6c3b, type: 3}
+  - {fileID: 8951525411334247836, guid: c305db104e3da7a4fb5c321771900cac, type: 3}
 --- !u!50 &7660621791362553552
 Rigidbody2D:
   serializedVersion: 4
