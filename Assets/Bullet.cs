@@ -8,7 +8,9 @@ public class Bullet : MonoBehaviour
 {
 	public GameObject hitEffect;
     private GameObject player;
-    [SerializeField] private float maxDistance; 
+    [SerializeField] private float maxDistance;
+
+    [SerializeField] private int bulletDamage = 100;
 
     void Start()
     {
@@ -29,6 +31,11 @@ public class Bullet : MonoBehaviour
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 			return;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyMovement>().TakeDamage(bulletDamage);
         }
 
         DestroyBullet();

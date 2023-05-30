@@ -1,34 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
-	public GameObject bulletPrefab;
+    public GameObject bulletPrefab;
 
-	public float bulletForce = 20;
+    public float bulletForce = 20;
 
     public float shootRate = 1f;
-    float nextAttackTime = 0f;
+    private float nextAttackTime;
+    
+
+    [SerializeField] private Animator animator;
+    private static readonly int IsShooting = Animator.StringToHash("IsShooting");
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Time.time > nextAttackTime)
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                GetComponent<Animator>().Play("Character3_Shoot",  -1, 0f);
                 Shoot();
                 nextAttackTime = Time.time + 1f / shootRate;
             }
+            
         }
+        
+        
     }
 
-	void Shoot()
-	{
-		GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-		Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();
-		rigidBody.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-	}
+    private void Shoot()
+    {
+        var bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        var rigidBody = bullet.GetComponent<Rigidbody2D>();
+        rigidBody.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+    }
 }
