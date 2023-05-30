@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    
     [SerializeField] private float speed = 5f;
 
     private float maxHealth = 100;
@@ -15,11 +15,13 @@ public class EnemyMovement : MonoBehaviour
     private Score score;
 
     private Rigidbody2D rb;
+    private GameObject target;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         score = GameObject.Find("ScoreText").GetComponent<Score>();
+        target = GameObject.Find("Soldier");
     }
     void FixedUpdate()
     {

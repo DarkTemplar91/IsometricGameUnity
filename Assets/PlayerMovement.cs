@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private int maxHealth = 3;
     private int currentHealth;
 
+    private bool isInvincible = false;
+
     private HealthUIscript uiScript;
 
     public void Start()
@@ -63,16 +65,34 @@ public class PlayerMovement : MonoBehaviour
 
     public void DecreaseHp()
     {
+	    if (isInvincible)
+		    return;
+	    
 	    uiScript.DeleteHeart(currentHealth);
 
 	    currentHealth--;
 	    if (currentHealth == 0)
 		    Die();
     }
+    
+    public void IncreaseHp()
+    {
+	    if (currentHealth == 3)
+		    return;
+	    
+	    currentHealth++;
+	    uiScript.AddHeart(currentHealth);
+
+    }
 
     private void Die()
     {
 	    //TODO: Destroy object and show death ui
 	    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SetInvincible(bool invincible)
+    {
+	    this.isInvincible = invincible;
     }
 }
